@@ -1,23 +1,13 @@
 function compareArrays(arr1, arr2) {
 
-	if (arr1.lenght !== arr2.lenght) {
-		return false;
-	}
-
-	return arr1.every((value, index) => {
-		console.log(value, arr2[index]);
-		return value === arr2[index];
-	})
+	return arr1.length === arr2.length && arr1.every((item, index) => item === arr2[index]);
 }
 
 function getUsersNamesInAgeRange(users, gender) {
-	const filteredUsers = users.filter(user => user.gender === gender);
-	if (filteredUsers.lenght === 0) {
-		return 0;
-	}
-	const ages = filteredUsers.map(user => user.age);
-	const averageAge = (ages.reduce((sum, age) => (sum + age))) / filteredUsers.lenght;
-	return averageAge;
 
+	let mas = users.filter(item => item.gender === gender).map(item => item.age);
+	let res = mas.reduce((sum, age) => sum + age, 0);
+
+	return (mas.length > 0) ? res / mas.length : 0;
 
 }
